@@ -1,13 +1,12 @@
 import React from 'react'
 import './App.css'
-import NavBar from './views/navigationbar'
-import Cards from './views/displayCard'
+import InitialPage from './views/initialPage'
+
 
 function App() {
     return (
         <>
-            <NavBar />
-            <Cards />
+            <InitialPage />
 
         </>
     )

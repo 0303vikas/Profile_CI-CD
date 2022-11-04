@@ -1,5 +1,5 @@
 import React from 'react'
-import './navigationbar.js'
+import './navigationbar.css'
 
 const NavBar = () => {
 
@@ -9,6 +9,7 @@ const NavBar = () => {
                 <ul className="nav-type">
                     <li><a target="_blank" className="active">MyCollection</a></li>
                     <li><a href='https://codepen.io/TomikaBoy/full/LqMpaE' className='active1'>Add</a></li>
+                    <li><a href='https://codepen.io/TomikaBoy/full/LqMpaE' className='active2'>Login</a></li>
                 </ul>
             </nav>
         </div>

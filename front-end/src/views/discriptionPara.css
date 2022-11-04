@@ -1,0 +1,13 @@
+.discriptionPara{
+    background-color: #74BDCB;
+    width: auto;
+    height: 30vh;
+    padding: 20px
+}
+
+.discriptionPara > div{
+    color: rgb(255,255,255);
+    height: inherit;
+    width: auto;
+    
+}

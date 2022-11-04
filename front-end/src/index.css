@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'ballons';
+  src: url(./fonts/Balloons-3ArL.ttf);
+
+}
+
+@font-face {
+  font-family: 'kakeka';
+  src: url(./fonts/KakekakeitalicpersonaluseNmi-Rpz16.otf);
+}
+
+@font-face {
+  font-family: 'font3';
+  src: url(./fonts/font3/GeraldinePersonalUseItalic-PK12m.ttf);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
