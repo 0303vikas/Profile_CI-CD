@@ -5,11 +5,7 @@ const Cards = () => {
 
     return(
         <div className="mainDiv">
-            <div className='bubble'>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            
             <div className='group'>
                 <div className="large-card card"></div>
                 <div className="small-card card"></div>
