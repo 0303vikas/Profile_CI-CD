@@ -1,8 +1,12 @@
 import React, { useState, createRef} from 'react'
-
+import axios from 'axios'
 import './addCollage.css'
 import NavBar from './navigationbar'
-import { postImages } from '../services/images'
+import ErrorMessage from './ErrorMessage'
+import { useNavigate } from 'react-router-dom'
+
+
+
 
 
 
@@ -10,20 +14,23 @@ import { postImages } from '../services/images'
 // eslint-disable-next-line react/prop-types
 const AddImageForm = ({ user }) => {
 
-    const [images, setImages] = useState([])
+    const navigate = useNavigate()
+
     var king = ''
+    const [errMess, seterrMess]  = useState('')
+    const [color, setcolor] = useState('')
        
-    const [image1, setImage1] = useState({imagedata: '', imageUrl: 'https://images.pexels.com/photos/2011173/pexels-photo-2011173.jpeg?auto=compress&cs=tinysrgb&w=600'})
+    const [image1, setImage1] = useState({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
   
-    const [image2, setImage2] = useState({imagedata: '', imageUrl: 'https://images.pexels.com/photos/2011173/pexels-photo-2011173.jpeg?auto=compress&cs=tinysrgb&w=600'})
+    const [image2, setImage2] = useState({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
    
-    const [image3, setImage3] = useState({imagedata: '', imageUrl: 'https://images.pexels.com/photos/2011173/pexels-photo-2011173.jpeg?auto=compress&cs=tinysrgb&w=600'})
+    const [image3, setImage3] = useState({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
     
-    const [image4, setImage4] = useState({imagedata: '', imageUrl: 'https://images.pexels.com/photos/2011173/pexels-photo-2011173.jpeg?auto=compress&cs=tinysrgb&w=600'})
-    const [image5, setImage5] = useState({imagedata: '', imageUrl: 'https://images.pexels.com/photos/2011173/pexels-photo-2011173.jpeg?auto=compress&cs=tinysrgb&w=600'})
-    const [image6, setImage6] = useState({imagedata: '', imageUrl: 'https://images.pexels.com/photos/2011173/pexels-photo-2011173.jpeg?auto=compress&cs=tinysrgb&w=600'})
-    const [image7, setImage7] = useState({imagedata: '', imageUrl: 'https://images.pexels.com/photos/2011173/pexels-photo-2011173.jpeg?auto=compress&cs=tinysrgb&w=600'})
-    const [image8, setImage8] = useState({imagedata: '', imageUrl: 'https://images.pexels.com/photos/2011173/pexels-photo-2011173.jpeg?auto=compress&cs=tinysrgb&w=600'})
+    const [image4, setImage4] = useState({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+    const [image5, setImage5] = useState({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+    const [image6, setImage6] = useState({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+    const [image7, setImage7] = useState({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+    const [image8, setImage8] = useState({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
     const inputImage1 = createRef(null)
     const inputImage2 = createRef(null)
     const inputImage3 = createRef(null)
@@ -32,6 +39,10 @@ const AddImageForm = ({ user }) => {
     const inputImage6 = createRef(null)
     const inputImage7 = createRef(null)
     const inputImage8 = createRef(null)
+
+    // eslint-disable-next-line no-unused-vars
+    const [progress,setprogress] = useState(0)
+    
 
     const differentfunction = {
         1: setImage1,
@@ -55,9 +66,7 @@ const AddImageForm = ({ user }) => {
 
     const submithandler = async (e) => {
         e.preventDefault()
-
-        setImages([...images,image1.imagedata,image2.imagedata,image3.imagedata,image4.imagedata,image5.imagedata,image6.imagedata,image7.imagedata,image8.imagedata])
-        console.log(images)
+        
         const formData = new FormData()
         
         formData.append('image1', image1.imagedata)
@@ -68,36 +77,76 @@ const AddImageForm = ({ user }) => {
         formData.append('image6', image6.imagedata)
         formData.append('image7', image7.imagedata)
         formData.append('image8', image8.imagedata)
-          
-        // for (var pair of formData.entries()){
-        //     console.log(`${pair[0]}: ${pair[1]}`)
-        // }
-        
-        
-        
-        
 
-        try{
-
-            // console.debug(formData.get('myGallery'))
+        setImage1({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+        setImage2({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+        setImage3({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+        setImage4({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+        setImage5({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+        setImage6({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+        setImage7({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+        setImage8({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
+        
+        try{           
             
-            const uploadimages = await postImages(user,formData)
+            
+            const request = await axios.post('api/images',formData, {
+                headers: {
+                    'content-type': 'multipart/form-data',
+                    // eslint-disable-next-line react/prop-types
+                    'Authorization': `Bearer ${user.token}`
+        
+                }                            
+            })
 
-            console.log(uploadimages)
+            formData.delete('image1')
+            formData.delete('image2')
+            formData.delete('image3')
+            formData.delete('image4')
+            formData.delete('image5')
+            formData.delete('image6')
+            formData.delete('image7')
+            formData.delete('image8')           
+
+            seterrMess('Uploading Photoes....')
+            setcolor('green')
+            console.log(request, errMess)
+
+            setTimeout(() => {
+                seterrMess('')
+                setcolor('')
+                navigate('/')
+
+                
+            }, 3000)
+
+            
+
+            
 
         } catch(err) {
-            console.log(err)
+            seterrMess(err)
+            setcolor('red')
+            
+
+            setTimeout(() => {
+                seterrMess('')
+                setcolor('')
+
+                
+            }, 1000)
 
 
         }
-
-
     }
+
+   
 
     return(
         <div className='mainDivAddPage' style={{width: '100%', height: '100vh'}}>
             <NavBar />
-            <div className='formdiv'>
+            <div className='formdiv'> 
+                { errMess.err === ''? null: <ErrorMessage err={errMess} col={color}  />  }          
                 <section style={{display: 'flex', justifyContent: 'space-between'}}>
                     <input type='file' className='' id ='1' style={{display: 'none'}} ref={inputImage1} accept='image/*' onChange={handleImage}/>
                     <p className='imageCard' onClick={() => inputImage1.current.click()} style={{backgroundImage: `url(${image1.imageUrl})`,backgroundSize: 'cover'}}>+</p>
