@@ -1,0 +1,60 @@
+.mainDivAddPage{
+    background-image: url('https://images.pexels.com/photos/752484/pexels-photo-752484.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.95;
+    
+}
+
+.mainDivAddPage:nth-child(2){
+    background-color: url('https://images.pexels.com/photos/3059489/pexels-photo-3059489.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+}
+
+.formdiv {
+    width: 45%;
+    height: 55%;
+    background: linear-gradient(to top left,#AC131C,#950706,#750227,#750227,#3B005C,#250740 );
+    /* border: 3px solid transparent;
+    border-image: linear-gradient(45deg, green, blue, purple, red,orange);
+    border-image-slice: 1; */
+    padding: 4px;
+    /* animation: 4s myGradient infinite;   */
+
+}
+
+.imageCard {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: dashed #E2DCDE 3px;
+    display: flex;
+    justify-content: center;
+    align-content:center;
+    font-size: xx-large;
+    color: #E2DCDE;
+
+}
+
+.imageCard:hover {
+    box-shadow :0 20px 20px rgba(0,0,0,0.15) ;
+}
+
+.formdiv > form{
+    width: 100%;
+    height: 100%;
+    background-color: azure;
+}
+
+@keyframes myGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}

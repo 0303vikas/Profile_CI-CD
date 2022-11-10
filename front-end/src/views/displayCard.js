@@ -4,8 +4,8 @@ import './displayCard.css'
 const LargeDiv2 = () => {
     return(
         <div style={{margin: '4px',width: '70%', height: '100%', backgroundColor: 'rgb(200, 223, 82)'}}>
-            <img src='https://cdn.pixabay.com/photo/2019/10/24/19/50/sloth-4575121__480.png' alt='tripImage' style={{width: '30%', height: '30%'}} />
-            
+            <img src='https://cdn.pixabay.com/photo/2019/10/24/19/50/sloth-4575121__480.png' alt='tripImage' style={{width: '30%', height: '30%'}} />    
+            <img src='https://images.pexels.com/photos/5583535/pexels-photo-5583535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' style={{width: '30%', height: '30%'}} />     
 
         </div>
     )

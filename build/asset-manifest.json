@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ead5c203.css",
+    "main.js": "/static/js/main.e14fdec4.js",
+    "static/js/787.22edae46.chunk.js": "/static/js/787.22edae46.chunk.js",
+    "static/media/KakekakeitalicpersonaluseNmi-Rpz16.otf": "/static/media/KakekakeitalicpersonaluseNmi-Rpz16.f2b58efc21388ce985c1.otf",
+    "static/media/GeraldinePersonalUseItalic-PK12m.ttf": "/static/media/GeraldinePersonalUseItalic-PK12m.07b14676730419ed2f36.ttf",
+    "static/media/Balloons-3ArL.ttf": "/static/media/Balloons-3ArL.e8c4d32e5853e6efe207.ttf",
+    "index.html": "/index.html",
+    "main.ead5c203.css.map": "/static/css/main.ead5c203.css.map",
+    "main.e14fdec4.js.map": "/static/js/main.e14fdec4.js.map",
+    "787.22edae46.chunk.js.map": "/static/js/787.22edae46.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ead5c203.css",
+    "static/js/main.e14fdec4.js"
+  ]
+}
