@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from './navigationbar'
 import Cards from './displayCard'
 import './initialPage.css'
 import DiscriptionPara from './discriptionPara'
 import Footer from './footer'
+import { getAll } from '../services/images'
 
 const InitialPage = () => {
+
+    const[images,setimages] = useState([])
+
+    useEffect(() => {
+        getAll().then(images => {
+            setimages(images)
+        })
+
+
+    },[])
+    
     return(<>
         <div>
             <div className="firstpara">
@@ -15,7 +27,7 @@ const InitialPage = () => {
 
             </div>
             <DiscriptionPara  />
-            <Cards />
+            <Cards images={images}/>
             <Footer />
         </div>
 

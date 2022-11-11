@@ -3,21 +3,17 @@ require('dotenv').config()
 
 
 const photoSchema = new mongoose.Schema({
-    largePhotos: {
+    title: {
         // eslint-disable-next-line no-undef
-        data: Buffer,
-        contentType: String
+        type: String,
+        required: true
     },
-    smallPhotos: {
-        // eslint-disable-next-line no-undef
-        data: Buffer,
-        contentType: String
-    },
+    files: [Object],
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
-})
+}, {timestamps: true})
 
 photoSchema.set('toJSON', {
     transform: (document, returnedObject) => {

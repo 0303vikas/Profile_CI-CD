@@ -1,8 +1,8 @@
 import axios from 'axios'
 const baseUrl = '/api/images'
 
-const getAll = async (userdata) => {
-    const request = await axios.get(baseUrl, { 'headers': { 'Authorization': `Bearer ${userdata.token}`}})
+const getAll = async () => {
+    const request = await axios.get(baseUrl)
     return request.data
 }
 
