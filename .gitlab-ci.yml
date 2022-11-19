@@ -36,6 +36,8 @@ variables:
 
 job1: 
   stage: build
+  tags:
+    - ci
   script: 
     - echo docker system info
 
