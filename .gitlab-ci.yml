@@ -21,6 +21,9 @@ stages:          # List of stages for jobs, and their order of execution
   # - test
   # - deploy
 
+defaults:
+  image: node:16.3.0
+
 variables:
   BACKEND_NAV: backend\
   FRONT_NAV: front-end\
@@ -39,7 +42,6 @@ job1:
   tags:
     - ci
   script:
-    - apt install nodejs
     - node --version
 
 .install_job inst 1/2:
