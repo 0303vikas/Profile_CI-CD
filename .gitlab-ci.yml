@@ -21,19 +21,36 @@ stages:          # List of stages for jobs, and their order of execution
   # - test
   # - deploy
 
-build_job:
+variables:
+  BACKEND_NAV: backend\
+  FRONT_NAV: front-end\
+
+.package_install:
+  script:&installing_dependencies
+    - npm install
+    - npm start
+
+.navigation:
+  script:
+    - cd 
+
+install_job inst 1/2:
   stage: build
   tags: 
     - ci
   script:
-    - echo Hello World
+    - cd &BACKEND_NAV 
+    <<:*installing_dependencies    
+    - echo successfully updated
 
-build_job2:
+install_job inst 2/2:
   stage: build
   tags:
     - ci
-  script: 
-    - echo pair of jobs working
+  script:
+    - cd ..\&FRONT_NAV
+    <<:*installing_dependencies
+    - echo front-end install
 
 # build-job:       # This job runs in the build stage, which runs first.
 #   stage: build
