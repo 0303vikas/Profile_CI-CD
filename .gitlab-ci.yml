@@ -21,9 +21,8 @@ stages:          # List of stages for jobs, and their order of execution
   # - test
   # - deploy
 
-defaults:
-  image: node:16.3.0
-
+.defaults:
+  
 variables:
   BACKEND_NAV: backend\
   FRONT_NAV: front-end\
@@ -39,6 +38,7 @@ variables:
 
 job1: 
   stage: build
+  image: node:16.3.0
   tags:
     - ci
   script:
