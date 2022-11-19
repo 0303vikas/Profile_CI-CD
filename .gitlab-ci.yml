@@ -39,7 +39,7 @@ job1:
   tags:
     - ci
   script:
-    - sudo apt install nodejs
+    - apt install nodejs
     - node --version
 
 .install_job inst 1/2:
