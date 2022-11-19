@@ -40,6 +40,7 @@ job1:
     - ci
   script: 
     - cd backend\
+    - node --version
 
 .install_job inst 1/2:
   stage: build
