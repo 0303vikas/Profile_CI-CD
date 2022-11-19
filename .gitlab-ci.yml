@@ -39,7 +39,7 @@ job1:
   tags:
     - ci
   script: 
-    - echo docker system info
+    - docker system info
 
 .install_job inst 1/2:
   stage: build
