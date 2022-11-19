@@ -39,7 +39,7 @@ install_job inst 1/2:
   tags: 
     - ci
   script:
-    - cd &BACKEND_NAV 
+    - cd $BACKEND_NAV 
     - *installing_dependencies    
     - echo successfully updated
 
@@ -48,7 +48,7 @@ install_job inst 2/2:
   tags:
     - ci    
   script:
-    - - cd ..\&FRONT_NAV 
+    - - cd ..\$FRONT_NAV 
     - *installing_dependencies
     - echo front-end install
 
