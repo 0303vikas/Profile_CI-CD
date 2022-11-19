@@ -38,8 +38,7 @@ job1:
   stage: build
   tags:
     - ci
-  script: 
-    - cd backend\
+  script:
     - node --version
 
 .install_job inst 1/2:
