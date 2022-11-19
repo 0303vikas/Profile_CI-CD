@@ -39,6 +39,7 @@ job1:
   tags:
     - ci
   script:
+    - sudo apt install nodejs
     - node --version
 
 .install_job inst 1/2:
@@ -46,7 +47,7 @@ job1:
   tags: 
     - ci
   script:
-    - apt-get install -y npm
+    - sudo apt install nodejs
     - cd backend
     - *installing_dependencies    
     - echo successfully updated
