@@ -21,14 +21,14 @@ stages:          # List of stages for jobs, and their order of execution
   # - test
   # - deploy
 
-build_job:
+build_job test 1/2:
   stage: build
   tags: 
     - ci
   script:
     - echo Hello World
 
-build_job:
+build_job test 2/2:
   stage: build
   tags:
     - ci
