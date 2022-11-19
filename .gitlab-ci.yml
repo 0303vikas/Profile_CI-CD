@@ -54,13 +54,13 @@ install_job inst 1/2:
     - *installing_dependencies    
     - echo successfully updated
 
-install_job inst 2/2:
+install_job2:
   stage: build
   image: node:16.3.0
   tags:
     - ci    
   script:
-    - cd ..\$FRONT_NAV 
+    - cd front-end 
     - *installing_dependencies
     - echo front-end install
 
