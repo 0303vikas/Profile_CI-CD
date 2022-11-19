@@ -39,7 +39,7 @@ job1:
   tags:
     - ci
   script: 
-    - docker system info
+    - cd backend\
 
 .install_job inst 1/2:
   stage: build
