@@ -39,6 +39,7 @@ install_job inst 1/2:
   tags: 
     - ci
   script:
+    - apt-get install -y npm
     - cd backend
     - *installing_dependencies    
     - echo successfully updated
