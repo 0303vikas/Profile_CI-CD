@@ -39,7 +39,7 @@ install_job inst 1/2:
   tags: 
     - ci
   script:
-    - cd $BACKEND_NAV 
+    - cd backend
     - *installing_dependencies    
     - echo successfully updated
 
