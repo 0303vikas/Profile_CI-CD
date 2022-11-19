@@ -37,7 +37,7 @@ variables:
 job1: 
   stage: build
   script: 
-    - docker system info
+    - echo docker system info
 
 .install_job inst 1/2:
   stage: build
