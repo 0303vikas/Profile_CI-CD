@@ -23,6 +23,8 @@ stages:          # List of stages for jobs, and their order of execution
 
 default:
   image: node:16.3.0
+  before_script:
+    - bundle install
   
 variables:
   BACKEND_NAV: backend
