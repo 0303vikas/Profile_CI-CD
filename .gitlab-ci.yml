@@ -21,7 +21,8 @@ stages:          # List of stages for jobs, and their order of execution
   # - test
   # - deploy
 
-
+default:
+  image: node:16.3.0
   
 variables:
   BACKEND_NAV: backend\
@@ -37,8 +38,7 @@ variables:
     - cd 
 
 job1: 
-  stage: build
-  image: node:16.3.0
+  stage: build  
   tags:
     - ci
   script:
@@ -46,12 +46,11 @@ job1:
     - node --version
 
 install_job inst 1/2:
-  stage: build
-  image: node:16.3.0
+  stage: build  
   tags: 
     - ci
   script:
-    - cd backend
+    - cd $BACKEND_NAV
     - *installing_dependencies    
     - echo successfully updated
 
