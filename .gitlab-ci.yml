@@ -27,12 +27,7 @@ variables:
 
 default:
   image: node:16.3.0
-  before_script:
-    - cd $BACKEND_NAV
-    - npm install
-    - cd ../$FRONT_NAV
-    - npm install
-
+  
 
 .package_install:
   script: &installing_dependencies
@@ -66,7 +61,7 @@ install_job2:
   tags:
     - ci    
   script:
-    - cd front-end 
+    - cd ../$FRONT_NAV
     - *installing_dependencies
     - echo front-end install
 
