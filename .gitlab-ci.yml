@@ -42,6 +42,7 @@ job1:
   tags:
     - ci
   script:
+    - echo $CI_JOB_IMAGE	
     - node --version
 
 install_job inst 1/2:
