@@ -18,7 +18,7 @@
 
 stages:          # List of stages for jobs, and their order of execution
   - build
-  # - test
+  - test
   # - deploy
 
 variables:
@@ -32,7 +32,7 @@ default:
 .package_install:
   script: &installing_dependencies
     - npm install
-    - npm start
+    
 
 .navigation:
   script:
@@ -46,7 +46,7 @@ default:
     - echo $CI_JOB_IMAGE	
     - node --version
 
-install_job inst 1/2:
+install_job back-end 1/2:
   stage: build  
   tags: 
     - ci
@@ -55,15 +55,31 @@ install_job inst 1/2:
     - *installing_dependencies    
     - echo successfully updated
 
-install_job2:
-  stage: build
-  image: node:16.3.0
+install_job2 front-end 2/2:
+  stage: build 
   tags:
     - ci    
   script:
     - cd ../$FRONT_NAV
     - *installing_dependencies
     - echo front-end install
+
+eslint back-end 1/2:
+  stage: test
+  tags:
+    - ci
+  script:
+    - cd ../$BACKEND_NAV
+    - npm run eslint
+
+eslint front-end 2/2:
+  stage: test
+  tags: 
+    - ci
+  script:
+    - cd ../$FRONT_NAV
+    - npm run eslint
+
 
 # build-job:       # This job runs in the build stage, which runs first.
 #   stage: build
