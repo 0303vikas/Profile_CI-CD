@@ -78,7 +78,7 @@ eslint back-end 1/2:
     - ci
   script:
     - cd $BACKEND_NAV
-    - apt show
+    - npm run eslint
 
 eslint front-end 2/2:
   stage: test
@@ -86,7 +86,7 @@ eslint front-end 2/2:
     - ci
   script:
     - cd $FRONT_NAV
-    - apt show
+    - npm run eslint
 
 
 # build-job:       # This job runs in the build stage, which runs first.
