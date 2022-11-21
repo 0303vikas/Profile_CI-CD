@@ -57,7 +57,7 @@ install_job back-end 1/2:
     - ls
   artifacts:
     paths:
-      - node_modules
+      - backend/node_modules
     expire_in: 1 week
 
 install_job2 front-end 2/2:
@@ -70,7 +70,7 @@ install_job2 front-end 2/2:
     - echo front-end install
   artifacts:
     paths:
-      - node_modules
+      - front-end/node_modules
     expire_in: 1 week
 
 eslint back-end 1/2:
