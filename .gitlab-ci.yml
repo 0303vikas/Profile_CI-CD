@@ -70,7 +70,7 @@ eslint back-end 1/2:
     - ci
   script:
     - cd $BACKEND_NAV
-    - npm run eslint
+    - echo eslint --version
 
 eslint front-end 2/2:
   stage: test
@@ -78,7 +78,7 @@ eslint front-end 2/2:
     - ci
   script:
     - cd $FRONT_NAV
-    - npm run eslint
+    - echo eslint --version
 
 
 # build-job:       # This job runs in the build stage, which runs first.
