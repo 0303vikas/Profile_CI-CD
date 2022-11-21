@@ -39,7 +39,7 @@ variables:
   script:
     - cd 
 
-job1: 
+.job1: 
   stage: build  
   tags:
     - ci
