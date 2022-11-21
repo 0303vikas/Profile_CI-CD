@@ -30,7 +30,7 @@ default:
   before_script:
     - cd $BACKEND_NAV
     - npm install
-    - cd ../$front-end
+    - cd ../$FRONT_NAV
     - npm install
 
 
