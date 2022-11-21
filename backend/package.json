@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
+    "eslint": "eslint './**/*.{js,jsx}'",
     "test": "mocha",
     "build:ui": "del /q /s build && cd ./front-end/ && npm run build && Xcopy build ..\\build /E/H ",
     "deploy": "git push heroku master",
