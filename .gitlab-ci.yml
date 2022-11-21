@@ -54,6 +54,7 @@ install_job back-end 1/2:
     - cd $BACKEND_NAV
     - *installing_dependencies    
     - echo successfully updated
+    - ls
   artifacts:
     paths:
       - node_modules
