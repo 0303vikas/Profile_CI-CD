@@ -62,7 +62,7 @@ imageRouter.post('/', [upload.array('files'),userExtractor ], async (req,res) =>
         })
 
         await multipleFiles.save()
-        res.status(201).send('Files Uploded Successfully');
+        res.status(201).send('Files Uploded Successfully')
 
     } catch (error) {
         res.status(400).send(error.message)
