@@ -21,14 +21,18 @@ stages:          # List of stages for jobs, and their order of execution
   # - test
   # - deploy
 
+variables:
+  BACKEND_NAV: backend
+  FRONT_NAV: front-end
+
 default:
   image: node:16.3.0
   before_script:
-    - bundle install
-  
-variables:
-  BACKEND_NAV: backend
-  FRONT_NAV: front-end\
+    - cd $BACKEND_NAV
+    - npm install
+    - cd ../$front-end
+    - npm install
+
 
 .package_install:
   script: &installing_dependencies
