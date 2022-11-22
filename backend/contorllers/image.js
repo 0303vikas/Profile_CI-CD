@@ -18,13 +18,21 @@ const storage = multer.diskStorage({
 
 const userExtractor = (req,res,next) => {
 
+  
     const authorization = req.get('authorization')
-    
+
     let token = null
     if(authorization && authorization.toLowerCase().startsWith('bearer ')) {
         token = authorization.substring(7) }
-    req.user = jwt.verify(token, process.env.SECRET_KEY)
+    jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+        if(err) return res.status(400).send(err.message)
+        else{
+            req.user = decoded
+        } 
+    })
     next()
+    
+   
 }
 
 const upload = multer({ storage: storage})
@@ -40,7 +48,7 @@ imageRouter.get('/', async (req,res) => {
 })
 
 
-imageRouter.post('/', [upload.array('files'),userExtractor ], async (req,res) => {
+imageRouter.post('/', [userExtractor,upload.array('files')], async (req,res) => {
     try{
         const user = await User.findById(req.user.id)
 

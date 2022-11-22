@@ -5,12 +5,6 @@ import NavBar from './navigationbar'
 import ErrorMessage from './ErrorMessage'
 import { useNavigate } from 'react-router-dom'
 
-
-
-
-
-
-
 // eslint-disable-next-line react/prop-types
 const AddImageForm = ({ user }) => {
     console.log(user)
@@ -127,7 +121,12 @@ const AddImageForm = ({ user }) => {
             
 
         } catch(err) {
-            seterrMess(err)
+            if( err.message === 'token Invalid') {
+                console.log(err.message)
+                localStorage.clear()
+                window.location.href ='/'
+            }
+            seterrMess(err.message)
             setcolor('red')
             
 
