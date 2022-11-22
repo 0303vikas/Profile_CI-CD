@@ -2,15 +2,15 @@ import React from 'react'
 import './displayCard.css'
 import PropTypes from 'prop-types'
 
-const LargeDiv2 = () => {
-    return(
-        <div style={{margin: '4px',width: '70%', height: '100%', backgroundColor: 'rgb(200, 223, 82)'}}>
-            <img src='https://cdn.pixabay.com/photo/2019/10/24/19/50/sloth-4575121__480.png' alt='tripImage' style={{width: '30%', height: '30%'}} />    
-            <img src='https://images.pexels.com/photos/5583535/pexels-photo-5583535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' style={{width: '30%', height: '30%'}} />     
+// const LargeDiv2 = () => {
+//     return(
+//         <div style={{margin: '4px',width: '70%', height: '100%', backgroundColor: 'rgb(200, 223, 82)'}}>
+//             <img src='https://cdn.pixabay.com/photo/2019/10/24/19/50/sloth-4575121__480.png' alt='tripImage' style={{width: '30%', height: '30%'}} />    
+//             <img src='https://images.pexels.com/photos/5583535/pexels-photo-5583535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' style={{width: '30%', height: '30%'}} />     
 
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
 
 const CardDiv = ({ imgarray }) => {
 
@@ -22,28 +22,17 @@ const CardDiv = ({ imgarray }) => {
 
     return(
         <div className='group'>
-            <div className="large-card card">
+            <div className="large-card card"><img src={`http://localhost:3001/${imgarray[4].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} />
 
             </div>
             <div className="small-card card"><img src={`http://localhost:3001/${imgarray[0].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
-            <div className="large-card card"></div>
+            <div className="large-card card"><img src={`http://localhost:3001/${imgarray[5].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
             <div className="small-card card"><img src={`http://localhost:3000/${imgarray[1].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
-            <div className="large-card card">
-                <LargeDiv2 />
-            </div>
+            <div className="large-card card"><img src={`http://localhost:3001/${imgarray[6].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
             <div className="small-card card"><img src={`http://localhost:3000/${imgarray[2].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
-            <div className="large-card card">
-                <div>
-                    <div className='div'></div>
-                    <div className='div'></div>
-                </div>
-                {/* <div>
-                    <div className='div'>jdsjj</div>
-                    <div className='div'>djdk</div>
-                </div> */}
-            </div>
+            <div className="large-card card"><img src={`http://localhost:3001/${imgarray[7].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
                 
-            <div className="small-card card"><img src={`http://localhost:3000/${imgarray[4].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
+            <div className="small-card card"><img src={`http://localhost:3000/${imgarray[3].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
         </div>
 
     )
