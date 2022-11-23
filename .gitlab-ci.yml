@@ -105,7 +105,18 @@ unittesting 1/2:
     job: 'eslint front-end 2/2'
     artifacts: true
 
-
+unittesting 2/2:
+  stage: test
+  tags:
+    - ci
+  script:
+    - cd $BACKEND_NAV
+    - npm install 
+    - npm run test
+  dependencies: []
+  needs: 
+    job: 'eslint front-end 2/2'
+    artifacts: true
 
 # build-job:       # This job runs in the build stage, which runs first.
 #   stage: build
