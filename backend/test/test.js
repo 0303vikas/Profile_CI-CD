@@ -62,6 +62,8 @@ describe('/api/image test', ()  => {
     // upload images ()
     const images = path.resolve(__dirname, '../images/img.jpg')
 
+    console.log(images)
+
     await api
     .post('/api/images')
     .set('content-type', 'multipart/form-data')
