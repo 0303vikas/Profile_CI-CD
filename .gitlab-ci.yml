@@ -98,6 +98,7 @@ unittesting 1/2:
     - ci
   script:
     - cd $FRONT_NAV
+    - npm install 
     - npm run test
   dependencies: []
   needs: 
