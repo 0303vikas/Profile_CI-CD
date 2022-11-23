@@ -76,7 +76,7 @@ describe('/api/image test', ()  => {
     .attach('files',images)
     .attach('files',images)     
 
-    console.log(apicall.body)
+    console.log(apicall)
 
     const imageEnd = await userImages()
 
