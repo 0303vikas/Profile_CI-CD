@@ -99,6 +99,7 @@ unittesting 1/2:
   script:
     - cd $FRONT_NAV
     - npm run test
+  dependencies: []
   needs: 
     job: 'eslint front-end 2/2'
     artifacts: true
