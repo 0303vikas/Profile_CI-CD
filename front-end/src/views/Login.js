@@ -56,6 +56,7 @@ const LoginForm = ({userUpdate}) => {
                         type="text"
                         value={username}
                         name="Username"
+                        placeholder='username'
                         onChange={({ target }) => setUsername(target.value)}
                     />
                 </div>
@@ -65,10 +66,11 @@ const LoginForm = ({userUpdate}) => {
                         type="password"
                         value={password}
                         name="Password"
+                        placeholder='password'
                         onChange={({ target }) => setPassword(target.value)}
                     />
                 </div>
-                <button id="login_button" type="submit">login</button>
+                <button id="login_button" type="submit" name='submit'>login</button>
             </form>
         </div>
     )
