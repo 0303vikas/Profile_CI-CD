@@ -7,7 +7,7 @@ require('dotenv').config()
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/')
+        cb(null, '/uploads/')
     },
     filename: (req, file, cb) => {
         cb(null, new Date().toISOString().replace(/:/g, '-') + '-' + file.originalname)
@@ -20,6 +20,8 @@ const userExtractor = (req,res,next) => {
 
   
     const authorization = req.get('authorization')
+
+    if (!authorization) return res.status(401).send({ error: 'token not present'})
 
     let token = null
     if(authorization && authorization.toLowerCase().startsWith('bearer ')) {
