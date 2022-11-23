@@ -66,7 +66,7 @@ describe('/api/image test', ()  => {
 
     await api
     .post('/api/images')
-    .set('content-type', 'multipart/form-data')
+    // .set('content-type', 'multipart/form-data')
     .set('Authorization', 'Bearer '+tokenExt)
     .attach('files',images)
     .attach('files',images)
