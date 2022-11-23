@@ -4,11 +4,13 @@ module.exports = {
         'es2021': true,
         'node': true,
         'commonjs': true,
+        'jest/globals': true,
         'cypress/globals': true
     },
     'extends': [
         'eslint:recommended',
         'plugin:react/recommended',
+        
     ],
     'overrides': [
     ],
@@ -17,7 +19,7 @@ module.exports = {
         'sourceType': 'module'
     },
     'plugins': [
-        'react'
+        'react', 'jest', 'cypress'
     ],
     'rules': {
         'indent': [
