@@ -92,6 +92,15 @@ eslint front-end 2/2:
     - npm run eslint
   needs: ['install_job front-end 2/2']
 
+unittesting 1/2:
+  stage: test
+  tags:
+    - ci
+  needs: ['eslint front-end 2/2']
+  script:
+    - cd $FRONT_NAV
+    - npm run test
+
 
 # build-job:       # This job runs in the build stage, which runs first.
 #   stage: build
