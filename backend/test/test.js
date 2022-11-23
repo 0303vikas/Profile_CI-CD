@@ -62,7 +62,7 @@ describe('/api/image test', ()  => {
     // upload images ()
     const images = path.resolve(__dirname, '../images/img.jpg')
 
-    console.log(images)
+    console.log(images, tokenExt)
 
     await api
     .post('/api/images')
