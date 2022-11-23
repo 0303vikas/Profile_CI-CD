@@ -7,6 +7,7 @@ require('dotenv').config()
 
 loginrouter.post('/', async (req, res) => {
     const { username,password } = req.body
+    console.log(req.body)
     const userExist = await User.findOne({ username })
 
     const passwordCorrect = userExist === null
