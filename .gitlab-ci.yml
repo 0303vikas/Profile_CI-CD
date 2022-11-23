@@ -46,7 +46,7 @@ default:
     - echo $CI_JOB_IMAGE	
     - node --version
 
-install_job back-end 1/2:
+.install_job back-end 1/2:
   stage: build  
   tags: 
     - ci
@@ -60,7 +60,7 @@ install_job back-end 1/2:
       - backend/node_modules
     expire_in: 1 week
 
-install_job front-end 2/2:
+.install_job front-end 2/2:
   stage: build 
   tags:
     - ci    
@@ -73,7 +73,7 @@ install_job front-end 2/2:
       - front-end/node_modules
     expire_in: 1 week
 
-eslint back-end 1/2:
+.eslint back-end 1/2:
   stage: test
   tags:
     - ci
@@ -83,7 +83,7 @@ eslint back-end 1/2:
   needs: ['install_job back-end 1/2']
      
 
-eslint front-end 2/2:
+.eslint front-end 2/2:
   stage: test
   tags: 
     - ci
@@ -92,7 +92,7 @@ eslint front-end 2/2:
     - npm run eslint
   needs: ['install_job front-end 2/2']
 
-unittesting 1/2:
+.unittesting 1/2:
   stage: test
   tags:
     - ci
