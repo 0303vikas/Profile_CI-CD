@@ -114,9 +114,7 @@ unittesting 2/2:
     - npm install 
     - npm run test
   dependencies: []
-  needs: 
-    job: 'eslint front-end 2/2'
-    artifacts: true
+  
 
 # build-job:       # This job runs in the build stage, which runs first.
 #   stage: build
