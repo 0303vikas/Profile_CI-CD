@@ -55,16 +55,16 @@ describe('/api/image test', ()  => {
 
   
 
-  test('image addition is possible', async() => {
+  test.only('image addition is possible', async() => {
 
     const imageBegin = await userImages()
 
     // upload images ()
     const images = path.resolve(__dirname, '../images/img.jpg')
-
+    console.log(images)
     await api
     .post('/api/images')
-    .set('content-type', 'multipart/form-data')
+    // .set('content-type', 'multipart/form-data')
     .set('Authorization', 'Bearer '+tokenExt)
     .attach('files',images)
     .attach('files',images)
