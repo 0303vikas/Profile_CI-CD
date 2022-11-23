@@ -62,11 +62,10 @@ describe('/api/image test', ()  => {
     // upload images ()
     const images = path.resolve(__dirname, '../images/img.jpg')
 
-    console.log(images, tokenExt)
 
-    await api
+    const apicall = await api
     .post('/api/images')
-    // // .set('content-type', 'multipart/form-data')
+    .set('content-type', 'multipart/form-data')
     .set('Authorization', 'Bearer '+tokenExt)
     .attach('files',images)
     .attach('files',images)
@@ -76,7 +75,8 @@ describe('/api/image test', ()  => {
     .attach('files',images)
     .attach('files',images)
     .attach('files',images)     
-    .expect(201)
+
+    console.log(apicall.body.error)
 
     const imageEnd = await userImages()
 
