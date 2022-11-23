@@ -28,10 +28,19 @@ require('dotenv').config()
 
 const app = express()
 
+if (process.env.NODE_ENV === 'test') {
+    mongoose.connect(process.env.MONGODB_URL_TEST)
+        .then(() => infoHandler('Connected to Mongodb'))
+        .catch(error => errorHandler(`Error connecting to database ${error.message}`))
 
-mongoose.connect(process.env.MONGODB_URL)
-    .then(() => infoHandler('Connected to Mongodb'))
-    .catch(error => errorHandler(`Error connecting to database ${error.message}`))
+
+} else{
+    mongoose.connect(process.env.MONGODB_URL)
+        .then(() => infoHandler('Connected to Mongodb'))
+        .catch(error => errorHandler(`Error connecting to database ${error.message}`))
+
+}
+
 
 app.use(cors())
 // app.use(express.static('build'))
