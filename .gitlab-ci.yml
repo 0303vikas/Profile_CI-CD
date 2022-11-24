@@ -132,7 +132,7 @@ integratingtest:
     - cd $BACKEND_NAV
     - npm start &
     - cd ../$FRONT_NAV
-    - npx cypress run --record --paralled --browser chrome --group 'UI - Chrome'
+    - npx cypress run --record --parallel --browser chrome --group 'UI - Chrome'
   
 
 # build-job:       # This job runs in the build stage, which runs first.
