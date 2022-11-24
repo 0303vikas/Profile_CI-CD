@@ -134,6 +134,7 @@ integratingtest:
     - cd $BACKEND_NAV
     - npm start &
     - cd ../$FRONT_NAV
+    - npx cypress install
     - npx cypress run --record --parallel --browser chrome --group 'UI - Chrome'
   
 
