@@ -120,7 +120,7 @@ install_job front-end 2/2:
     artifacts: true
 
 integratingtest:
-  image: cypress/browsers:node16.3.0-chrome94-ff93
+  image: cypress/browsers:node16.5.0-chrome94-ff93
   stage: test
   parallel: 5
   tags: 
