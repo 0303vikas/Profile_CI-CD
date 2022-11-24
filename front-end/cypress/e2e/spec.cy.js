@@ -1,6 +1,6 @@
 describe('empty spec', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login')
+    cy.visit('http://localhost:3000/login',{ headers: { "Accept-Encoding": "gzip, deflate" } })
     cy.login('dropi','dropidropi')    
     cy.wait(1000)
 
@@ -9,7 +9,7 @@ describe('empty spec', () => {
 
   
   it('Add Page can be accepted ', () => {
-    cy.visit('http://localhost:3000/add')
+    cy.visit('http://localhost:3000/add', { headers: { "Accept-Encoding": "gzip, deflate" } })
     cy.get('.navigation').find('li').eq(1).click()
     cy.get('.formdiv').should('be.visible')
 
