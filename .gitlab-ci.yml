@@ -125,8 +125,7 @@ integratingtest:
   stage: test
   parallel: 5
   tags: 
-    - ci
-  network_mode: host
+    - ci 
   dependencies:
     - install_job back-end 1/2
     - install_job front-end 2/2
