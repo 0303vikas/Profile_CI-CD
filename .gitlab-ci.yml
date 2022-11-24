@@ -132,6 +132,7 @@ integratingtest:
   script:
     - cd $BACKEND_NAV
     - npm start &
+    - sleep 5
     - cd ../$FRONT_NAV
     - npx cypress install
     - npx cypress run --record --key $CYPRESS_CI_RECORDING_STRING --parallel --browser chrome --group 'UI - Chrome'
