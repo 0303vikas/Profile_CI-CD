@@ -68,12 +68,9 @@ install_job front-end 2/2:
     - cd $FRONT_NAV
     - *installing_dependencies
     - echo front-end install
-    - npx cypress install
-    - echo 'cypress installed'
   artifacts:
     paths:
-      - front-end/node_modules
-      - /root/.cache/Cypress
+      - front-end/node_modules      
     expire_in: 1 week
     when: always
 
@@ -136,7 +133,8 @@ integratingtest:
     - cd $BACKEND_NAV
     - npm start &
     - cd ../$FRONT_NAV
-    - npx cypress run --record --parallel --browser chrome --group 'UI - Chrome'
+    - npx cypress install
+    - npx cypress run --record --KEY $CYPRESS_CI_RECORDING_STRING --parallel --browser chrome --group 'UI - Chrome'
   
 
 # build-job:       # This job runs in the build stage, which runs first.
