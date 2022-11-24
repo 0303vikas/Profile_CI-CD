@@ -134,7 +134,7 @@ integratingtest:
     - npm start &
     - cd ../$FRONT_NAV
     - npx cypress install
-    - npx cypress run --record --KEY $CYPRESS_CI_RECORDING_STRING --parallel --browser chrome --group 'UI - Chrome'
+    - npx cypress run --record --key $CYPRESS_CI_RECORDING_STRING --parallel --browser chrome --group 'UI - Chrome'
   
 
 # build-job:       # This job runs in the build stage, which runs first.
