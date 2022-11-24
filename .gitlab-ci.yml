@@ -26,7 +26,7 @@ variables:
   FRONT_NAV: front-end
 
 default:
-  image: node:16.3.0
+  image: node:16.10.0
   
 
 .package_install:
@@ -71,7 +71,9 @@ install_job front-end 2/2:
   artifacts:
     paths:
       - front-end/node_modules
+      - cache/Cypress
     expire_in: 1 week
+    when: always
 
 .eslint back-end 1/2:
   stage: test
