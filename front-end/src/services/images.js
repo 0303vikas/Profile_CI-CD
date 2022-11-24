@@ -7,10 +7,10 @@ const getAll = async () => {
 }
 
 const postImages = async (userdata,imageArray) => {
-    const request = await axios.post('api/images',imageArray, {
+    const request = await axios.post('/api/images',imageArray, {
         headers: {
             'content-type': 'multipart/form-data',
-            'Authorization': 'Bearer '+userdata.token
+            'Authorization': 'Bearer '+ userdata.token
 
         },
         onUploadProgress: progressEvent => console.log(Math.round( (progressEvent.loaded * 100) / progressEvent.total ))
