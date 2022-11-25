@@ -130,11 +130,11 @@ integratingtest:
     - install_job back-end 1/2
     - install_job front-end 2/2
   script:
+    - npm ci
     - cd $BACKEND_NAV
     - npm start
     - sleep 10
     - cd ../$FRONT_NAV
-    - npx cypress install
     - npx cypress run --record --key $CYPRESS_CI_RECORDING_STRING --parallel --browser chrome --group 'UI - Chrome'
   
 
