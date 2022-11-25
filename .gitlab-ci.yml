@@ -131,6 +131,7 @@ integratingtest:
     - install_job front-end 2/2
   script:
     - cd $BACKEND_NAV
+    - npm install wait-on
     - npm start & wait-on http://localhost:5000
     - sleep 10
     - cd ../$FRONT_NAV
