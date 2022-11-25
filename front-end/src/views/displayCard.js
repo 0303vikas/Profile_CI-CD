@@ -16,23 +16,23 @@ const CardDiv = ({ imgarray }) => {
 
 
 
-    console.log(imgarray[0].filePath)
+    console.log(imgarray[4].filePath)
 
 
 
     return(
         <div className='group'>
-            <div className="large-card card"><img src={`http://localhost:3001/${imgarray[4].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} />
+            <div className="large-card card"><img src={`http://localhost:5000/${imgarray[4].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} />
 
             </div>
-            <div className="small-card card"><img src={`http://localhost:3001/${imgarray[0].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
-            <div className="large-card card"><img src={`http://localhost:3001/${imgarray[5].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
-            <div className="small-card card"><img src={`http://localhost:3000/${imgarray[1].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
-            <div className="large-card card"><img src={`http://localhost:3001/${imgarray[6].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
-            <div className="small-card card"><img src={`http://localhost:3000/${imgarray[2].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
-            <div className="large-card card"><img src={`http://localhost:3001/${imgarray[7].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
+            <div className="small-card card"><img src={`http://localhost:5000/${imgarray[0].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
+            <div className="large-card card"><img src={`http://localhost:5000/${imgarray[5].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
+            <div className="small-card card"><img src={`http://localhost:5000/${imgarray[1].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
+            <div className="large-card card"><img src={`http://localhost:5000/${imgarray[6].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
+            <div className="small-card card"><img src={`http://localhost:5000/${imgarray[2].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
+            <div className="large-card card"><img src={`http://localhost:5000/${imgarray[7].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
                 
-            <div className="small-card card"><img src={`http://localhost:3000/${imgarray[3].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
+            <div className="small-card card"><img src={`http://localhost:5000/${imgarray[3].filePath}`} alt='tripImage' style={{width: 'inherit', height: '100%', borderRadius: 'inherit'}} /></div>
         </div>
 
     )

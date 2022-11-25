@@ -1,9 +1,9 @@
 import React, { useState, createRef} from 'react'
-import axios from 'axios'
 import './addCollage.css'
 import NavBar from './navigationbar'
 import ErrorMessage from './ErrorMessage'
 import { useNavigate } from 'react-router-dom'
+import { postImages } from '../services/images'
 
 // eslint-disable-next-line react/prop-types
 const AddImageForm = ({ user }) => {
@@ -88,12 +88,8 @@ const AddImageForm = ({ user }) => {
         try{           
             
             
-            const request = await axios.post('api/images',formData, {
-                headers: {
-                    // eslint-disable-next-line react/prop-types
-                    Authorization: `bearer ${user.token}`
-                }
-            })
+            const request = await postImages(user,formData)
+            
 
             formData.delete('image1')
             formData.delete('image2')
