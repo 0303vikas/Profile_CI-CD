@@ -2,6 +2,7 @@ import React,{  useState  } from 'react'
 import { login } from '../services/login'
 import { useNavigate } from 'react-router-dom'
 import ErrorMessage from './ErrorMessage'
+import './Login.css'
 
 import NavBar from './navigationbar'
 
@@ -45,32 +46,35 @@ const LoginForm = ({userUpdate}) => {
 
 
     return (
-        <div>
+        <div className='login_page'>
             <NavBar />
-            <form id='login_form' onSubmit={handleLogin}> 
-                {error?<ErrorMessage err={error} col={errorColor} />:null}   
-                
+            <div style={{marginBottom: '200px'}}>kks</div>
+            <form id='login_form' name='login_form' onSubmit={handleLogin}> 
                 <div>
-            username
-                    <input
-                        type="text"
-                        value={username}
-                        name="Username"
-                        placeholder='username'
-                        onChange={({ target }) => setUsername(target.value)}
-                    />
+                    {error?<ErrorMessage err={error} col={errorColor} />:null}   
+                    
+                    <div>
+                username
+                        <input
+                            type="text"
+                            value={username}
+                            name="Username"
+                            placeholder='username'
+                            onChange={({ target }) => setUsername(target.value)}
+                        />
+                    </div>
+                    <div>
+                password
+                        <input
+                            type="password"
+                            value={password}
+                            name="Password"
+                            placeholder='password'
+                            onChange={({ target }) => setPassword(target.value)}
+                        />
+                    </div>
+                    <button id="login_button" type="submit" name='submit'>login</button>
                 </div>
-                <div>
-            password
-                    <input
-                        type="password"
-                        value={password}
-                        name="Password"
-                        placeholder='password'
-                        onChange={({ target }) => setPassword(target.value)}
-                    />
-                </div>
-                <button id="login_button" type="submit" name='submit'>login</button>
             </form>
         </div>
     )
