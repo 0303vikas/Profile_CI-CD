@@ -7,9 +7,10 @@ const getAll = async () => {
 }
 
 const postImages = async (userdata,imageArray) => {
-    const request = await axios.post('/api/images',imageArray, {
+    console.log(userdata)
+    const request = await axios.post(baseUrl,imageArray, {
         headers: {
-            'content-type': 'multipart/form-data',
+            // 'content-type': 'multipart/form-data',
             'Authorization': 'Bearer '+ userdata.token
 
         },

@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'test') {
 
 app.use(cors())
 // app.use(express.static('build'))
-app.use(express.json({limit: '100mb'}))
+app.use(express.json({limit: '50mb'}))
 app.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}))
 
 // eslint-disable-next-line no-undef
