@@ -55,7 +55,7 @@ describe('/api/image test', ()  => {
 
   
 
-  test.only('image addition is possible', async() => {
+  test('image addition is possible', async() => {
 
     const imageBegin = await userImages()
 
