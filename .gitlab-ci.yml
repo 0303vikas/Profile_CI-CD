@@ -117,6 +117,8 @@ unittesting 2/2:
   script:
     - cd $BACKEND_NAV 
     - npm run test
+  allow_failure: true
+
   
 
 integratingtest:
