@@ -74,26 +74,30 @@ install_job front-end 2/2:
     expire_in: 1 week
     when: always
 
-.eslint back-end 1/2:
+eslint back-end 1/2:
   stage: test
   tags:
     - ci
+  dependencies:
+    - install_job back-end 1/2
   script:
     - cd $BACKEND_NAV
     - npm run eslint
   needs: ['install_job back-end 1/2']
      
 
-.eslint front-end 2/2:
+eslint front-end 2/2:
   stage: test
   tags: 
     - ci
+  dependencies:
+    - install_job front-end 2/2
   script:
     - cd $FRONT_NAV
     - npm run eslint
   needs: ['install_job front-end 2/2']
 
-.unittesting 1/2:
+unittesting 1/2:
   stage: test
   tags:
     - ci
@@ -102,28 +106,22 @@ install_job front-end 2/2:
     - npm run test
   dependencies:
     - install_job front-end 2/2
-  needs: 
-    job: 'eslint front-end 2/2'
-    artifacts: true
 
-.unittesting 2/2:
+
+unittesting 2/2:
   stage: test
   tags:
     - ci
   dependencies:
-    - install_job front-end 1/2
+    - install_job back-end 1/2
   script:
     - cd $BACKEND_NAV 
     - npm run test
-  dependencies: []
-  needs: 
-    job: 'eslint back-end 1/2'
-    artifacts: true
+  
 
 integratingtest:
   image: cypress/browsers:node16.5.0-chrome94-ff93
-  stage: test
-  parallel: 5
+  stage: test  
   tags: 
     - ci 
   dependencies:
