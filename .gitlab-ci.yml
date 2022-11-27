@@ -133,6 +133,7 @@ integratingtest:
     - cd $FRONT_NAV
     - npm ci
     - npm start &
+    - sleep 10
     - cd ../$BACKEND_NAV
     - npm start &
     - sleep 10
