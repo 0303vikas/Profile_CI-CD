@@ -91,7 +91,7 @@ eslint front-end 2/2:
   tags: 
     - ci
   dependencies:
-    - install_job front-end 1/2
+    - install_job front-end 2/2
   script:
     - cd $FRONT_NAV
     - npm run eslint
@@ -106,9 +106,7 @@ unittesting 1/2:
     - npm run test
   dependencies:
     - install_job front-end 2/2
-  needs: 
-    job: 'eslint front-end 2/2'
-    artifacts: true
+
 
 unittesting 2/2:
   stage: test
@@ -119,9 +117,7 @@ unittesting 2/2:
   script:
     - cd $BACKEND_NAV 
     - npm run test
-  needs: 
-    job: 'eslint back-end 1/2'
-    artifacts: true
+  
 
 integratingtest:
   image: cypress/browsers:node16.5.0-chrome94-ff93
