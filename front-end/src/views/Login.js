@@ -29,8 +29,9 @@ const LoginForm = ({userUpdate}) => {
             )
 
             userUpdate(user)
+            setTimeout(() => navigate('/add'),3000)
 
-            navigate('/add')
+            
             
 
         } catch (e) {
