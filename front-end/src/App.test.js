@@ -35,7 +35,6 @@ describe('Testing Front-end', () => {
        const user = userEvent.setup()
 
        await user.click(button3)
-       screen.debug()
 
 
 
@@ -51,10 +50,8 @@ describe('Testing Front-end', () => {
        mockCallback = jest.fn()
       render(<Router><LoginForm userUpdate={mockCallback}/></Router>) 
     })
-    screen.debug()
 
     test('navbar exists', () => {     
-      screen.debug()
       expect(screen.getByText(/Add/i)).toBeDefined()
      })
 

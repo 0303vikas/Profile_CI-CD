@@ -3,3 +3,4 @@ src/views/footer.js
 src/App.test.js
 cypress
 cypress.config.js
+build

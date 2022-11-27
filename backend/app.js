@@ -1,6 +1,7 @@
 const createError = require('http-errors')
 const express = require('express')
 const path = require('path')
+
 require('express-async-errors')
 // const path = require('path')
 const cookieParser = require('cookie-parser')
@@ -8,8 +9,8 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
 
-const loginrouter = require('./contorllers/login')
-const userroutes = require('./contorllers/users')
+const loginrouter = require('./controllers/login')
+const userroutes = require('./controllers/users')
 
 const {
     requestLogger,
@@ -22,7 +23,7 @@ const {
     errorHandler
 } = require('./utils/logger')
 
-const imageRouter  = require('./contorllers/image')
+const imageRouter  = require('./controllers/image')
 
 require('dotenv').config()
 
