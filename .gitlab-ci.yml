@@ -132,6 +132,7 @@ integratingtest:
   script:
     - cd $FRONT_NAV
     - npm ci
+    - npm start &
     - cd ../$BACKEND_NAV
     - npm start &
     - sleep 10
