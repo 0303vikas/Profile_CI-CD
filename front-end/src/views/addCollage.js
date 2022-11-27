@@ -60,6 +60,8 @@ const AddImageForm = ({ user }) => {
 
     const submithandler = async (e) => {
         e.preventDefault()
+
+        const usertoken = JSON.parse(window.localStorage.getItem('loggedGalleryappUser'))
         
         const formData = new FormData()
         
@@ -72,7 +74,7 @@ const AddImageForm = ({ user }) => {
         formData.append('files', image7.imagedata)
         formData.append('files', image8.imagedata)
         // eslint-disable-next-line react/prop-types
-        formData.append('token', user.token)
+        formData.append('token', usertoken.token)
         
 
         setImage1({imagedata: '', imageUrl: process.env.REACT_APP_BASIC_IMAGE_URL})
@@ -88,7 +90,7 @@ const AddImageForm = ({ user }) => {
         try{           
             
             
-            const request = await postImages(user,formData)
+            const request = await postImages(usertoken,formData)
             
 
             formData.delete('image1')

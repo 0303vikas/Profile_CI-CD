@@ -7,7 +7,7 @@ const getAll = async () => {
 }
 
 const postImages = async (userdata,imageArray) => {
-    console.log(userdata)
+    console.log(userdata, 'user data')
     const request = await axios.post(baseUrl,imageArray, {
         headers: {
             // 'content-type': 'multipart/form-data',
