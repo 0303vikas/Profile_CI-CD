@@ -54,7 +54,7 @@ before_script:
     - echo $CI_JOB_IMAGE	
     - node --version
 
-install_job back-end 1/2:
+.install_job back-end 1/2:
   stage: build  
   tags: 
     - ci
