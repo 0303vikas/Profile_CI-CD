@@ -152,7 +152,8 @@ deploy:
   stage: deploy  
   tags:
     - ci
-  script:  
+  script: 
+    - echo $FLY_USER_TOKEN
     - flyctl auth token $FLY_USER_TOKEN
     - flyctl deploy
 
