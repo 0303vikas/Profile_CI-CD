@@ -5,6 +5,12 @@ kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
+[build]
+  builder = "paketobuildpacks/builder:base"
+  buildpacks = ["gcr.io/paketo-buildpacks/nodejs"]
+  dockerfile = "./front-end/Dockerfile"
+  dockerfile = "./back-end/Dockerfile"
+
 [env]
 
 [experimental]
@@ -13,7 +19,7 @@ processes = []
 
 [[services]]
   http_checks = []
-  internal_port = 8080
+  internal_port = 5000
   processes = ["app"]
   protocol = "tcp"
   script_checks = []
