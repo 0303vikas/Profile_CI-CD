@@ -20,6 +20,9 @@ stages:          # List of stages for jobs, and their order of execution
   - build
   - test
   - deploy
+  
+include:
+  - template: AWS/Deploy-ECS.gitlab-ci.yml
 
 variables:
   BACKEND_NAV: backend
