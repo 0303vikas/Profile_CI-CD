@@ -154,7 +154,7 @@ deploy:
     - ci
   script: 
     - echo $FLY_USER_TOKEN
-    - flyctl auth token $FLY_USER_TOKEN
+    - flyctl auth login $FLY_USER_TOKEN
     - flyctl deploy
 
   
