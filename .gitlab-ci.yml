@@ -154,7 +154,7 @@ deploy:
     - ci
   script: 
     - echo $FLY_USER_TOKEN
-    - flyctl auth login --email "2751vikassingh@gmail.com" --password "FcyTzFkK4xm79LT"
+    - flyctl auth login --email $FLY_USER_EMAIL --password $FLY_USER_PASSWORD
     - flyctl launch
     - flyctl deploy
 
