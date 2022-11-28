@@ -125,7 +125,7 @@ install_job front-end 2/2:
 
   
 
-integratingtest:
+.integratingtest:
   image: cypress/browsers:node16.5.0-chrome94-ff93
   stage: test  
   tags: 
