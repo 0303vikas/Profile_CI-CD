@@ -155,6 +155,7 @@ deploy:
   script: 
     - echo $FLY_USER_TOKEN
     - flyctl auth login $FLY_USER_TOKEN
+    - flyctl launch
     - flyctl deploy
 
   
