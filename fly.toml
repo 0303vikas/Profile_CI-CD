@@ -1,6 +1,6 @@
-# fly.toml file generated for one-travel-gallery on 2022-11-28T20:13:06+02:00
+# fly.toml file generated for our-travel-gallery on 2022-11-28T20:24:21+02:00
 
-app = "one-travel-gallery"
+app = "our-travel-gallery"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
