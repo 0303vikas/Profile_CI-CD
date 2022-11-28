@@ -146,6 +146,8 @@ install_job front-end 2/2:
   
 deploy:
   stage: deploy  
+  tag:
+    - ci
   script:
   - flyctl deploy
 
