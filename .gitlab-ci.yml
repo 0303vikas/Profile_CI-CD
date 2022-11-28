@@ -19,7 +19,9 @@
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
-  # - deploy
+  - deploy
+  
+
 
 variables:
   BACKEND_NAV: backend
@@ -27,6 +29,12 @@ variables:
 
 default:
   image: node:16.10.0
+
+before_script:
+  - apt-get update -qq && apt-get install -y curl
+  - curl -L https://fly.io/install.sh | sh
+  - export FLYCTL_INSTALL="/root/.fly"
+  - export PATH="$FLYCTL_INSTALL/bin:$PATH"
   
 
 .package_install:
@@ -46,7 +54,7 @@ default:
     - echo $CI_JOB_IMAGE	
     - node --version
 
-install_job back-end 1/2:
+.install_job back-end 1/2:
   stage: build  
   tags: 
     - ci
@@ -60,7 +68,7 @@ install_job back-end 1/2:
       - backend/node_modules
     expire_in: 1 week
 
-install_job front-end 2/2:
+.install_job front-end 2/2:
   stage: build 
   tags:
     - ci    
@@ -74,7 +82,7 @@ install_job front-end 2/2:
     expire_in: 1 week
     when: always
 
-eslint back-end 1/2:
+.eslint back-end 1/2:
   stage: test
   tags:
     - ci
@@ -86,7 +94,7 @@ eslint back-end 1/2:
   needs: ['install_job back-end 1/2']
      
 
-eslint front-end 2/2:
+.eslint front-end 2/2:
   stage: test
   tags: 
     - ci
@@ -97,7 +105,7 @@ eslint front-end 2/2:
     - npm run eslint
   needs: ['install_job front-end 2/2']
 
-unittesting 1/2:
+.unittesting 1/2:
   stage: test
   tags:
     - ci
@@ -108,7 +116,7 @@ unittesting 1/2:
     - install_job front-end 2/2
 
 
-unittesting 2/2:
+.unittesting 2/2:
   stage: test
   tags:
     - ci
@@ -117,9 +125,11 @@ unittesting 2/2:
   script:
     - cd $BACKEND_NAV 
     - npm run test
+  allow_failure: true
+
   
 
-integratingtest:
+.integratingtest:
   image: cypress/browsers:node16.5.0-chrome94-ff93
   stage: test  
   tags: 
@@ -137,6 +147,17 @@ integratingtest:
     - sleep 10
     - cd ../$FRONT_NAV
     - npx cypress run --record --key $CYPRESS_CI_RECORDING_STRING --parallel --browser chrome --group 'UI - Chrome'
+  
+deploy:
+  stage: deploy  
+  tags:
+    - ci
+  script: 
+    - echo $FLY_USER_TOKEN
+    - flyctl auth login $FLY_USER_TOKEN
+    - flyctl launch
+    - flyctl deploy
+
   
 
 # build-job:       # This job runs in the build stage, which runs first.
