@@ -8,8 +8,8 @@ processes = []
 [build]
   builder = "paketobuildpacks/builder:base"
   buildpacks = ["gcr.io/paketo-buildpacks/nodejs"]
-  dockerfile = "./front-end/Dockerfile"
-  dockerfile = "./back-end/Dockerfile"
+  dockerfile = "docker-compose"
+ 
 
 [env]
 
