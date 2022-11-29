@@ -1,16 +1,12 @@
-# fly.toml file generated for our-travel-gallery on 2022-11-28T20:24:21+02:00
+# fly.toml file generated for back-end-host on 2022-11-29T06:40:32+02:00
 
-app = "our-travel-gallery"
+app = "back-end-host"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
-[build]
-  builder = "heroku/buildpacks:20"
- 
 
 [env]
-  PORT= "8080"
 
 [experimental]
   allowed_public_ports = []
