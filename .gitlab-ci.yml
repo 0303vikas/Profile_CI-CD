@@ -30,11 +30,7 @@ variables:
 default:
   image: node:16.10.0
 
-before_script:
-  - apt-get update -qq && apt-get install -y curl
-  - curl -L https://fly.io/install.sh | sh
-  - export FLYCTL_INSTALL="/root/.fly"
-  - export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
   
 
 .package_install:
@@ -149,7 +145,12 @@ before_script:
     - npx cypress run --record --key $CYPRESS_CI_RECORDING_STRING --parallel --browser chrome --group 'UI - Chrome'
   
 deploy:
-  stage: deploy  
+  stage: deploy
+  before_script:
+  - apt-get update -qq && apt-get install -y curl
+  - curl -L https://fly.io/install.sh | sh
+  - export FLYCTL_INSTALL="/root/.fly"
+  - export PATH="$FLYCTL_INSTALL/bin:$PATH"  
   tags:
     - ci
   script: 
