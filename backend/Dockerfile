@@ -9,8 +9,4 @@ RUN npm install
 
 COPY . /app/ourtravelapp
 
-RUN npm run build
-
-COPY . /usr/src/app
-
 CMD ["npm", "start"]
