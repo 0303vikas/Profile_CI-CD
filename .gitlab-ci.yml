@@ -155,6 +155,7 @@ deploy:
   script: 
     - echo $FLY_USER_TOKEN
     - /root/.fly/bin/flyctl auth login --email $FLY_USER_EMAIL --password $FLY_USER_PASSWORD 
+    - /root/.fly/bin/flyctl secrets set PORT=$PORT MONGODB_PASSWORD=$MONGODB_PASSWORD MONGODB_USER=$MONGODB_USER MONGODB_URL=$MONGODB_URL SECRET_KEY=$SECRET_KEY
     - /root/.fly/bin/flyctl deploy
 
   
