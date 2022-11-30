@@ -30,11 +30,7 @@ variables:
 default:
   image: node:16.10.0
 
-before_script:
-  - apt-get update -qq && apt-get install -y curl
-  - curl -L https://fly.io/install.sh | sh
-  - export FLYCTL_INSTALL="/root/.fly"
-  - export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
   
 
 .package_install:
@@ -149,12 +145,18 @@ before_script:
     - npx cypress run --record --key $CYPRESS_CI_RECORDING_STRING --parallel --browser chrome --group 'UI - Chrome'
   
 deploy:
-  stage: deploy  
+  stage: deploy
+  before_script:
+  - apt-get update -qq && apt-get install -y curl
+  - curl -L https://fly.io/install.sh | sh
+  - export FLYCTL_INSTALL="/root/.fly"
+  - export PATH="$FLYCTL_INSTALL/bin:$PATH"  
   tags:
     - ci
   script: 
     - echo $FLY_USER_TOKEN
     - /root/.fly/bin/flyctl auth login --email $FLY_USER_EMAIL --password $FLY_USER_PASSWORD 
+    - /root/.fly/bin/flyctl secrets set PORT=$PORT MONGODB_PASSWORD=$MONGODB_PASSWORD MONGODB_USER=$MONGODB_USER MONGODB_URL=$MONGODB_URL SECRET_KEY=$SECRET_KEY
     - /root/.fly/bin/flyctl deploy
 
   
