@@ -1,17 +1,5 @@
-# This file is a template, and might need editing before it works on your project.
-# This is a sample GitLab CI/CD configuration file that should run without any modifications.
-# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
-# it uses echo commands to simulate the pipeline execution.
-#
-# A pipeline is composed of independent jobs that run scripts, grouped into stages.
-# Stages run in sequential order, but jobs within stages run in parallel.
-#
+
 # For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
-#
-# You can copy and paste this template into a new `.gitlab-ci.yml` file.
-# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
-#
-# To contribute improvements to CI/CD templates, please follow the Development guide at:
 # https://docs.gitlab.com/ee/development/cicd/templates.html
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
@@ -50,7 +38,7 @@ default:
     - echo $CI_JOB_IMAGE	
     - node --version
 
-install_job back-end 1/2:
+install_job_back_end:
   stage: build  
   tags: 
     - ci
@@ -64,7 +52,7 @@ install_job back-end 1/2:
       - backend/node_modules
     expire_in: 1 week
 
-install_job front-end 2/2:
+install_job_front_end:
   stage: build 
   tags:
     - ci    
@@ -78,28 +66,28 @@ install_job front-end 2/2:
     expire_in: 1 week
     when: always
 
-eslint back-end 1/2:
+eslint_back_end:
   stage: test
   tags:
     - ci
   dependencies:
-    - install_job back-end 1/2
+    - install_job_back_end
   script:
     - cd $BACKEND_NAV
     - npm run eslint
-  needs: ['install_job back-end 1/2']
+  needs: [install_job_back_end]
      
 
-eslint front-end 2/2:
+eslint_front_end:
   stage: test
   tags: 
     - ci
   dependencies:
-    - install_job front-end 2/2
+    - install_job_front_end
   script:
     - cd $FRONT_NAV
     - npm run eslint
-  needs: ['install_job front-end 2/2']
+  needs: ['install_job_front_end']
 
 unittesting 1/2:
   stage: test
@@ -109,7 +97,9 @@ unittesting 1/2:
     - cd $FRONT_NAV 
     - npm run test
   dependencies:
-    - install_job front-end 2/2
+    - install_job_front_end
+  needs:
+    - install_job_front_end
 
 
 unittesting 2/2:
@@ -117,7 +107,9 @@ unittesting 2/2:
   tags:
     - ci
   dependencies:
-    - install_job back-end 1/2
+    - install_job_back_end
+  needs:
+    - install_job_back_end
   script:
     - cd $BACKEND_NAV 
     - npm run test
@@ -131,8 +123,11 @@ integratingtest:
   tags: 
     - ci 
   dependencies:
-    - install_job back-end 1/2
-    - install_job front-end 2/2
+    - install_job_back_end
+    - install_job_front_end
+  needs:
+    - install_job_back_end
+    - install_job_front_end
   script:
     - cd $FRONT_NAV
     - npm ci
@@ -159,31 +154,4 @@ deploy:
     - /root/.fly/bin/flyctl secrets set PORT=$PORT MONGODB_PASSWORD=$MONGODB_PASSWORD MONGODB_USER=$MONGODB_USER MONGODB_URL=$MONGODB_URL SECRET_KEY=$SECRET_KEY
     - /root/.fly/bin/flyctl deploy
 
-  
 
-# build-job:       # This job runs in the build stage, which runs first.
-#   stage: build
-#   script:
-#     - echo "Compiling the code..."
-#     - echo "Compile complete."
-
-# unit-test-job:   # This job runs in the test stage.
-#   stage: test    # It only starts when the job in the build stage completes successfully.
-#   script:
-#     - echo "Running unit tests... This will take about 60 seconds."
-#     - sleep 60
-#     - echo "Code coverage is 90%"
-
-# lint-test-job:   # This job also runs in the test stage.
-#   stage: test    # It can run at the same time as unit-test-job (in parallel).
-#   script:
-#     - echo "Linting code... This will take about 10 seconds."
-#     - sleep 10
-#     - echo "No lint issues found."
-
-# deploy-job:      # This job runs in the deploy stage.
-#   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-#   environment: production
-#   script:
-#     - echo "Deploying application..."
-#     - echo "Application successfully deployed."
