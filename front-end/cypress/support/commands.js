@@ -10,7 +10,7 @@
 //
 //
 Cypress.Commands.add('login', (username, password) => { 
-    cy.request('POST', 'http://localhost:5000/api/login',{
+    cy.request('POST', 'http://localhost:8080/api/login',{
         username, password
     }).then(({ body }) => {
         localStorage.setItem(
