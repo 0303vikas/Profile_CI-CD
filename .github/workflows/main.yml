@@ -18,9 +18,7 @@ jobs:
       - name: install job
         run: | 
           cd ./front-end
-          npm install
-      - name: npm install
-        run: npm install
+          npm install      
       - name: lint
         run: |
           cd ./front-end
