@@ -9,6 +9,13 @@ on:
 jobs:
    simple_testing_pipeline:
      runs-on: ubuntu-latest
+     env: 
+      PORT: ${{secrets.PORT}}
+      MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
+      MONGODB_USER: ${{secrets.MONGODB_USER}}
+      MONGODB_URL: ${{secrets.MONGODB_URL}}
+      MONGODB_URL_TEST: ${{secrets.MONGODB_URL_TEST}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
      if: ${{ github.event_name == 'push' }}
      steps:
       - uses: actions/checkout@v3
