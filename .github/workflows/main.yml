@@ -53,7 +53,7 @@ jobs:
         with: 
            start: |            
               cd ../../front-end
-              npm run start
+              npm start
               cd ../backend
-              npm run start
+              npm start
               wait-on: http://localhost:8080
