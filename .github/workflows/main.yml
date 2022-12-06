@@ -52,12 +52,13 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           working-directory: front-end
-          start:  npm start
+          start:  npm start, npm run server:run
+          command: npm run cypress
           wait-on: http://localhost:3000
    build:
      runs-on: ubuntu-latest
      env:
-      FLY_API_TOKEN: ${{secrets.FLY_ACCESS_TOKEN}}
+      FLY_API_TOKEN: ${{secrets.FLY_ACCESS_TOKEN}}     
      if: ${{ github.event.commits.*.message == '#skip' }}    
      steps:
       - uses: actions/checkout@v3
