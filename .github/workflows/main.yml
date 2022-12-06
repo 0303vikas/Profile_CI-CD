@@ -52,8 +52,8 @@ jobs:
         uses: cypress-io/github-action@v4
         with: 
            start: |            
-            cd ../../front-end
-            npm run start
-            cd ../backend
-            npm run start
-            wait-on: http://localhost:8080
+              cd ../../front-end
+              npm run start
+              cd ../backend
+              npm run start
+              wait-on: http://localhost:8080
