@@ -50,10 +50,6 @@ jobs:
       - name: e2e tests
         continue-on-error: true        
         uses: cypress-io/github-action@v4
-        with: 
-           start: |            
-              cd ../../front-end
-              npm start
-              cd ../backend
-              npm start
-              wait-on: http://localhost:8080
+        with:
+          start: npm start
+          wait-on: http://localhost:8080
