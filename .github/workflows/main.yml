@@ -48,8 +48,8 @@ jobs:
 #           cd ./backend
 #           npm run test
       - name: e2e tests
-        continue-on-error: true
-        uses: cypress-io/github-action@v4.2.0
+        continue-on-error: true        
+        uses: cypress-io/github-action@v4
         with: 
            start: |            
             cd ../../front-end
