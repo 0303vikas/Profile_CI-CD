@@ -30,29 +30,29 @@ jobs:
         run: | 
           cd ./backend
           npm install      
-      - name: lint
-        run: |
-          cd ./front-end
-          npm run eslint 
-      - name: lint
-        run: |
-          cd ./backend
-          npm run eslint 
-      - name: test front end
-        run: |
-          cd ./front-end
-          npm run test
-      - name: test back end
-        continue-on-error: true
-        run: |
-          cd ./backend
-          npm run test
+#       - name: lint
+#         run: |
+#           cd ./front-end
+#           npm run eslint 
+#       - name: lint
+#         run: |
+#           cd ./backend
+#           npm run eslint 
+#       - name: test front end
+#         run: |
+#           cd ./front-end
+#           npm run test
+#       - name: test back end
+#         continue-on-error: true
+#         run: |
+#           cd ./backend
+#           npm run test
       - name: e2e tests
         continue-on-error: true
         uses: cypress-io/github-action@v4.2.0
         with: 
            start: |            
-            cd ./front-end
+            cd ../../front-end
             npm run start
             cd ../backend
             npm run start
