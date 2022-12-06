@@ -51,9 +51,9 @@ jobs:
         continue-on-error: true
         uses: cypress-io/github-action@v4.2.0
         with: 
-           start: |
+           start: |            
             cd ./front-end
             npm run start
             cd ../backend
             npm run start
-           wait-on: http://localhost:8080
+            wait-on: http://localhost:8080
