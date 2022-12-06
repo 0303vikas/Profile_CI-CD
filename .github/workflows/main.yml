@@ -7,10 +7,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-   simple_testing_pipeline:
-     defaults:
-      run:
-        working-directory: Profile_CI-CD
+   simple_testing_pipeline:     
      runs-on: ubuntu-latest
      env: 
       PORT: ${{secrets.PORT}}
@@ -54,8 +51,9 @@ jobs:
         continue-on-error: true        
         uses: cypress-io/github-action@v4
         with:
-          start: cd.. & npm start
-          wait-on: http://localhost:8080
+          working-directory: front-end
+          start:  npm start
+          wait-on: http://localhost:3000
    build:
      runs-on: ubuntu-latest
      env:
