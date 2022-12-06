@@ -7,55 +7,55 @@ on:
     types: [opened, synchronize]
 
 jobs:
-#    simple_testing_pipeline:     
-#      runs-on: ubuntu-latest
-#      env: 
-#       PORT: ${{secrets.PORT}}
-#       MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
-#       MONGODB_USER: ${{secrets.MONGODB_USER}}
-#       MONGODB_URL: ${{secrets.MONGODB_URL}}
-#       MONGODB_URL_TEST: ${{secrets.MONGODB_URL_TEST}}
-#       SECRET_KEY: ${{secrets.SECRET_KEY}}
-#      if: ${{ github.event_name == 'push' }}
-#      steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v2
-#         with:
-#           node-version: '16'
-#       - name: install job front end
-#         run: | 
-#           cd ./front-end
-#           npm install
-#       - name: install job back end
-#         run: | 
-#           cd ./backend
-#           npm install      
-#       - name: lint
-#         run: |
-#           cd ./front-end
-#           npm run eslint 
-#       - name: lint
-#         run: |
-#           cd ./backend
-#           npm run eslint 
-#       - name: test front end
-#         run: |
-#           cd ./front-end
-#           npm run test
-#       - name: test back end
-#         continue-on-error: true
-#         run: |
-#           cd ./backend
-#           npm run test
-#       - name: e2e tests
-#         continue-on-error: true        
-#         uses: cypress-io/github-action@v4
-#         with:
-#           working-directory: front-end
-#           start:  npm start, npm run server:run
-#           command: npm run cypress
-#           wait-on: http://localhost:3000
-   build:
+    simple_testing_pipeline:     
+     runs-on: ubuntu-latest
+     env: 
+      PORT: ${{secrets.PORT}}
+      MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
+      MONGODB_USER: ${{secrets.MONGODB_USER}}
+      MONGODB_URL: ${{secrets.MONGODB_URL}}
+      MONGODB_URL_TEST: ${{secrets.MONGODB_URL_TEST}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+     if: ${{ github.event_name == 'push' }}
+     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: install job front end
+        run: | 
+          cd ./front-end
+          npm install
+      - name: install job back end
+        run: | 
+          cd ./backend
+          npm install      
+      - name: lint
+        run: |
+          cd ./front-end
+          npm run eslint 
+      - name: lint
+        run: |
+          cd ./backend
+          npm run eslint 
+      - name: test front end
+        run: |
+          cd ./front-end
+          npm run test
+      - name: test back end
+        continue-on-error: true
+        run: |
+          cd ./backend
+          npm run test
+      - name: e2e tests
+        continue-on-error: true        
+        uses: cypress-io/github-action@v4
+        with:
+          working-directory: front-end
+          start:  npm start, npm run server:run
+          command: npm run cypress
+          wait-on: http://localhost:3000
+    build:
      runs-on: ubuntu-latest   
      env:
       FLY_API_TOKEN: ${{secrets.FLY_ACCESS_TOKEN}}     
@@ -94,7 +94,7 @@ jobs:
            description: Deployment was cancelled           
            details: Mission error
            webhookUrl: ${{ secrets.DISCORD_WEB_HOOK}}
-   tag_release:
+    tag_release:
      needs: [build]
      runs-on: ubuntu-latest
      if: ${{ github.event_name == 'push' }}     
