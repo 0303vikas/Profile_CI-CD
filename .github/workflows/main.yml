@@ -8,6 +8,9 @@ on:
 
 jobs:
    simple_testing_pipeline:
+     defaults:
+      run:
+        working-directory: Profile_CI-CD
      runs-on: ubuntu-latest
      env: 
       PORT: ${{secrets.PORT}}
