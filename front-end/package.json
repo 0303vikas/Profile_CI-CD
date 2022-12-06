@@ -19,8 +19,8 @@
     "eslint": "eslint .",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --transformIgnorePatterns 'node_modules/(?!(axios)/)'",
-    "eject": "react-scripts eject"
-    "server:run": "cd ../backend && npm start"
+    "eject": "react-scripts eject",
+    "server:run": "cd ../backend && npm start",
     "cypress": "npx cypress run --record --key $CYPRESS_CI_RECORDING_STRING --parallel --browser chrome --group 'UI - Chrome'"
   },
   "eslintConfig": {
