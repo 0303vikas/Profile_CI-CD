@@ -51,5 +51,5 @@ jobs:
         continue-on-error: true        
         uses: cypress-io/github-action@v4
         with:
-          start: npm start
+          start: cd.. & npm start
           wait-on: http://localhost:8080
