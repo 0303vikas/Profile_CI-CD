@@ -1,5 +1,5 @@
 # Profile_CI-CD
-Web Gallery is a web application specifically designed for creating and managing photo galleries. It enables users to access their cherished memories and collages from any location. To ensure the utmost security and privacy, the application includes a robust login and registration system, allowing users to securely store their personal memories.
+My Travel Gallery is a web application specifically designed for creating and managing photo galleries. It enables users to access their cherished memories and collages from any location. To ensure the utmost security and privacy, the application includes a robust login and registration system, allowing users to securely store their personal memories.
 
 This application also serves as a test case for building and testing a Continuous Integration/Continuous Deployment (CI/CD) pipeline using GitHub and GitLab. By implementing CI/CD practices, the development process is streamlined and automated, facilitating efficient testing and deployment of new features and updates.
 
